@@ -66,7 +66,7 @@ publish](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-publish) doc
 
 ## Caveats
 
-[comment]: (Just in case people get confused ...)
+[comment]: # (Just in case people get confused ...)
 This program displays the current weather for Portland, *Oregon* not Portland, *Maine*.
 
 ## Copyright
