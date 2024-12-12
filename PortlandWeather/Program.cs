@@ -25,9 +25,9 @@ internal class Program
         client.BaseAddress = new Uri(OPENWEATHERMAP_API_ENDPOINT);
         client.DefaultRequestHeaders.UserAgent.ParseAdd(USER_AGENT);
 
-        string key = Environment.GetEnvironmentVariable("KEY") ?? string.Empty;
+        string key = Environment.GetEnvironmentVariable("WEATHER_KEY") ?? string.Empty;
 
-        CurrentWeather weather = null;
+        CurrentWeather weather;
         WeatherService service = new WeatherService(client, key);
 
         try
