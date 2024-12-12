@@ -37,7 +37,7 @@ internal class Program
         catch (AggregateException aex)
         {
             Console.WriteLine($"ERROR: {aex.Message} : {aex.StackTrace}");
-            Console.WriteLine("Did you remember to set KEY environment variable?");
+            Console.WriteLine("Did you remember to set WEATHER_KEY environment variable?");
             return;
         }
 
