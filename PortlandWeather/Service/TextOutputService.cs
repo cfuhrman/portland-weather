@@ -22,14 +22,29 @@ public class TextOutputService
 
         Console.WriteLine("** Conditions in {0} as of {1} **\n", currentWeather.Name, currentTime.ToString("f"));
 
-        Console.WriteLine($"Current Temperature : {ConvertToFahrenheit(currentWeather.Main.Temperature)}° (feels like {ConvertToFahrenheit(currentWeather.Main.FeelsLike)}°)");
-        Console.WriteLine($"Temperature Range   : {ConvertToFahrenheit(currentWeather.Main.MinTemperature)}° (Low) to {ConvertToFahrenheit(currentWeather.Main.MaxTemperature)}° (High)\n");
+        Console.WriteLine(
+            "Current Temperature : {0:0.0}° (feels like {1:0.0}°)",
+            ConvertToFahrenheit(currentWeather.Main.Temperature),
+            ConvertToFahrenheit(currentWeather.Main.FeelsLike)
+            );
 
-        Console.Write($"Conditions are {currentWeather.Weather[0].Main.ToLower()} with {currentWeather.Weather[0].Description}, a humidity of {currentWeather.Main.Humidity}%,\n wind speed of {ConvertToMilesPerHour(currentWeather.Wind.Speed)} mph, ");
+        Console.WriteLine(
+            "Temperature Range   : {0:0.0}° (Low) to {1:0.0}° (High)\n",
+            ConvertToFahrenheit(currentWeather.Main.MinTemperature),
+            ConvertToFahrenheit(currentWeather.Main.MaxTemperature)
+            );
+
+        Console.Write(
+            "Conditions are {0} with {1}, a humidity of {2}%,\n wind speed of {3:0.00} mph, ",
+            currentWeather.Weather[0].Main.ToLower(),
+            currentWeather.Weather[0].Description,
+            currentWeather.Main.Humidity,
+            ConvertToMilesPerHour(currentWeather.Wind.Speed)
+            );
 
         if (currentWeather.Wind.Gust != null)
         {
-            Console.WriteLine($"and gusts up to {ConvertToMilesPerHour((double)currentWeather.Wind.Gust)} mph.\n");
+            Console.WriteLine("and gusts up to {0:0.00} mph.\n", ConvertToMilesPerHour((double)currentWeather.Wind.Gust));
         }
         else
         {
@@ -48,11 +63,9 @@ public class TextOutputService
     /// </summary>
     /// <param name="kelvin">Temperature in Kelvin</param>
     /// <returns>Temperature in Fahrenheit</returns>
-    static double ConvertToFahrenheit(double kelvin)
+    public static double ConvertToFahrenheit(double kelvin)
     {
-        double fahrenheit = ((kelvin - 273.15) * 1.8) + 32;
-
-        return Math.Round(fahrenheit, 2);
+        return ((kelvin - 273.15) * 1.8) + 32;
     }
 
     /// <summary>
@@ -60,10 +73,8 @@ public class TextOutputService
     /// </summary>
     /// <param name="msec">Speed in meters/sec</param>
     /// <returns>Speed in miles/hour</returns>
-    static double ConvertToMilesPerHour(double msec)
+    public static double ConvertToMilesPerHour(double msec)
     {
-        double mph = msec * METER_PER_SEC_TO_MPH;
-
-        return Math.Round(mph, 2);
+        return msec * METER_PER_SEC_TO_MPH;
     }
 }
