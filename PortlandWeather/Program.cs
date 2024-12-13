@@ -46,6 +46,6 @@ internal class Program
             currentWeather = weather
         };
 
-        outputService.Generate();
+        outputService.Render();
     }
 }

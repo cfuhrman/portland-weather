@@ -11,7 +11,10 @@ public class TextOutputService
 
     public required CurrentWeather currentWeather { get; set; }
 
-    public void Generate()
+    /// <summary>
+    /// Generates output to console
+    /// </summary>
+    public void Render()
     {
         var currentTime = DateTimeOffset.FromUnixTimeSeconds(currentWeather.UNIXTimeStamp).ToLocalTime();
         var sunrise = DateTimeOffset.FromUnixTimeSeconds(currentWeather.Sys.Sunrise).ToLocalTime();
