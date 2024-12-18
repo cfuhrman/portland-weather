@@ -41,10 +41,10 @@ key and then do the following:
 [comment]: # (Does anyone still use csh or derivative?)
 ```
 # Set API Key in bourne-shell compatible shells (bash, zsh, etc.,)
-export KEY=your-key-here
+export WEATHER_KEY=your-key-here
 
 # Set API Key in Powershell
-Set-Item -Path Env:\KEY -Value "your-key-here"
+Set-Item -Path Env:\WEATHER_KEY -Value "your-key-here"
 
 # Run the program
 dotnet run
