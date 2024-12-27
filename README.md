@@ -51,7 +51,7 @@ export WEATHER_LONGITUDE=-122.1409983
 Set-Item -Path Env:\WEATHER_KEY -Value "your-key-here"
 
 # Optional: Set Latitude & Longitude
-Set-Item -Path Env:\ WEATHER_LATITUDE -Value 47.672082
+Set-Item -Path Env:\WEATHER_LATITUDE -Value 47.672082
 Set-Item -Path Env:\WEATHER_LONGITUDE -Value -122.1409983
 
 # Run the program
