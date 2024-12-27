@@ -1,8 +1,8 @@
 # Portland Weather
 
-A simple C# app to display current conditions in Portland, OR as provided by the
-[OpenWeatherMap](https://openweathermap.org/api) API.  This program was written
-for .Net 8.0, although newer versions may work as well.
+A simple C# app to display current conditions in Portland, OR (and optionally
+others) as provided by the [OpenWeatherMap](https://openweathermap.org/api) API.
+This program was written for .Net 8.0, although newer versions may work as well.
 
 ## Sample output
 
@@ -43,8 +43,16 @@ key and then do the following:
 # Set API Key in bourne-shell compatible shells (bash, zsh, etc.,)
 export WEATHER_KEY=your-key-here
 
+# Optional: Set Latitude & Longitude
+export WEATHER_LATITUDE=47.672082
+export WEATHER_LONGITUDE=-122.1409983
+
 # Set API Key in Powershell
 Set-Item -Path Env:\WEATHER_KEY -Value "your-key-here"
+
+# Optional: Set Latitude & Longitude
+Set-Item -Path Env:\ WEATHER_LATITUDE -Value 47.672082
+Set-Item -Path Env:\WEATHER_LONGITUDE -Value -122.1409983
 
 # Run the program
 dotnet run
@@ -67,7 +75,7 @@ publish](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-publish) doc
 ## Caveats
 
 [comment]: # (Just in case people get confused ...)
-This program displays the current weather for Portland, *Oregon* not Portland, *Maine*.
+By default, this program displays the current weather for Portland, *Oregon* not Portland, *Maine*.
 
 ## Copyright
 
