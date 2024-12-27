@@ -6,7 +6,7 @@ namespace PortlandWeather;
 internal class Program
 {
     /// <summary>
-    /// Lattitude & Longitude courtesy Google Maps
+    /// Latitude & Longitude courtesy Google Maps
     /// </summary>
     const double LATITUDE = 45.5148142;
     const double LONGITUDE = -122.6816836;
@@ -27,12 +27,17 @@ internal class Program
 
         string key = Environment.GetEnvironmentVariable("WEATHER_KEY") ?? string.Empty;
 
+        // For lat/long, we must use strings to figure out if
+        // environmental variables are set or not.
+        string latitude = Environment.GetEnvironmentVariable("WEATHER_LATITUDE") ?? LATITUDE.ToString();
+        string longitude = Environment.GetEnvironmentVariable("WEATHER_LONGITUDE") ?? LONGITUDE.ToString();
+
         CurrentWeather weather;
         WeatherService service = new WeatherService(client, key);
 
         try
         {
-            weather = service.GetCurrentWeatherAsync(LATITUDE, LONGITUDE).Result;
+            weather = service.GetCurrentWeatherAsync(Convert.ToDouble(latitude), Convert.ToDouble(longitude)).Result;
         }
         catch (AggregateException aex)
         {
