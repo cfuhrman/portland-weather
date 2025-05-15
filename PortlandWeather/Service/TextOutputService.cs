@@ -31,28 +31,28 @@ public class TextOutputService
         );
 
         sb.AppendFormat(
-            "Current Temperature : {0:0.0}° (feels like {1:0.0}°)\n",
-            ConvertToFahrenheit(currentWeather.Main.Temperature),
-            ConvertToFahrenheit(currentWeather.Main.FeelsLike)
+            "Current Temperature : {0}° (feels like {1}°)\n",
+            Math.Round(ConvertToFahrenheit(currentWeather.Main.Temperature), MidpointRounding.AwayFromZero),
+            Math.Round(ConvertToFahrenheit(currentWeather.Main.FeelsLike), MidpointRounding.AwayFromZero)
         );
 
         sb.AppendFormat(
-            "Temperature Range   : {0:0.0}° (Low) to {1:0.0}° (High)\n\n",
-            ConvertToFahrenheit(currentWeather.Main.MinTemperature),
-            ConvertToFahrenheit(currentWeather.Main.MaxTemperature)
+            "Temperature Range   : {0}° (Low) to {1}° (High)\n\n",
+            Math.Round(ConvertToFahrenheit(currentWeather.Main.MinTemperature), MidpointRounding.AwayFromZero),
+            Math.Round(ConvertToFahrenheit(currentWeather.Main.MaxTemperature), MidpointRounding.AwayFromZero)
         );
 
         sb.AppendFormat(
-            "Conditions are {0} with {1}, a humidity of {2}%,\n wind speed of {3:0.00} mph, ",
+            "Conditions are {0} with {1}, a humidity of {2}%,\n wind speed of {3} mph, ",
             currentWeather.Weather[0].Main.ToLower(),
             currentWeather.Weather[0].Description,
             currentWeather.Main.Humidity,
-            ConvertToMilesPerHour(currentWeather.Wind.Speed)
+            Math.Round(ConvertToMilesPerHour(currentWeather.Wind.Speed), MidpointRounding.AwayFromZero)
         );
 
         if (currentWeather.Wind.Gust != null)
         {
-            sb.AppendFormat("and gusts up to {0:0.00} mph.\n\n", ConvertToMilesPerHour((double)currentWeather.Wind.Gust));
+            sb.AppendFormat("and gusts up to {0} mph.\n\n", Math.Round(ConvertToMilesPerHour((double)currentWeather.Wind.Gust), MidpointRounding.AwayFromZero));
         }
         else
         {
