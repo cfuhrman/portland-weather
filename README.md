@@ -9,11 +9,11 @@ This program was written for .Net 8.0, although newer versions may work as well.
 ```
 ** Conditions in Portland as of Friday, December 13, 2024 1:13 PM **
 
-Current Temperature : 42.3° (feels like 34.5°)
-Temperature Range   : 40.0° (Low) to 44.7° (High)
+Current Temperature : 42° (feels like 35°)
+Temperature Range   : 40° (Low) to 45° (High)
 
 Conditions are rain with moderate rain, a humidity of 94%,
- wind speed of 16.11 mph, and gusts up to 25.32 mph.
+ wind speed of 16 mph, and gusts up to 25 mph.
 
 The sun will rise at 7:43 AM and will set at 4:27 PM
 
