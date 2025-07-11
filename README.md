@@ -7,15 +7,15 @@ This program was written for .Net 8.0, although newer versions may work as well.
 ## Sample output
 
 ```
-** Conditions in Portland as of Friday, December 13, 2024 1:13 PM **
+** Conditions in Portland as of Friday, July 11, 2025 11:29 AM **
 
-Current Temperature : 42� (feels like 35�)
-Temperature Range   : 40� (Low) to 45� (High)
+Current Temperature : 75° (feels like 75°)
+Temperature Range   : 72° (Low) to 78° (High)
 
-Conditions are rain with moderate rain, a humidity of 94%,
- wind speed of 16 mph, and gusts up to 25 mph.
+Conditions are clear 🌣 with clear sky, a humidity of 59%,
+ wind speed of 7 mph, and no gusts.
 
-The sun will rise at 7:43 AM and will set at 4:27 PM
+The sun will rise at 5:33 AM and will set at 8:59 PM
 
 Data by OpenWeatherMap
 ```
