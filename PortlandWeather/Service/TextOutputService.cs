@@ -10,6 +10,21 @@ public class TextOutputService
     /// </summary>
     const double METER_PER_SEC_TO_MPH = 2.2369363;
 
+    /// <summary>
+    /// Icon ID to emoji Map
+    /// </summary>
+    private Dictionary<string, string> iconMap = new Dictionary<string, string> {
+        { "01d", "🌣"},
+        { "02d", "🌤"},
+        { "03d", "🌥"},
+        { "04d", "🌥"},
+        { "09d", "🌧"},
+        { "10d", "🌧"},
+        { "11d", "🌩"},
+        { "13d", "🌨"},
+        { "50d", "🌫"},
+        };
+
     public required CurrentWeather currentWeather { get; set; }
 
     /// <summary>
@@ -43,12 +58,19 @@ public class TextOutputService
         );
 
         sb.AppendFormat(
-            "Conditions are {0} with {1}, a humidity of {2}%,\n wind speed of {3} mph, ",
+            "Conditions are {0} {1} with {2}, a humidity of {3}%,\n wind speed of {4} mph, ",
             currentWeather.Weather[0].Main.ToLower(),
+            iconMap[currentWeather.Weather[0].Icon],
             currentWeather.Weather[0].Description,
             currentWeather.Main.Humidity,
             Math.Round(ConvertToMilesPerHour(currentWeather.Wind.Speed), MidpointRounding.AwayFromZero)
         );
+
+        if (currentWeather.Clouds.All != 0)
+            sb.AppendFormat(
+                "{0}% cloud cover, ",
+                currentWeather.Clouds.All
+            );
 
         if (currentWeather.Wind.Gust != null)
         {

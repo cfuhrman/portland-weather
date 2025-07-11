@@ -32,25 +32,35 @@ internal class Program
         string latitude = Environment.GetEnvironmentVariable("WEATHER_LATITUDE") ?? LATITUDE.ToString();
         string longitude = Environment.GetEnvironmentVariable("WEATHER_LONGITUDE") ?? LONGITUDE.ToString();
 
-        CurrentWeather weather;
+        CurrentWeather? weather;
         WeatherService service = new WeatherService(client, key);
 
         try
         {
             weather = service.GetCurrentWeatherAsync(Convert.ToDouble(latitude), Convert.ToDouble(longitude)).Result;
+
+            if (weather == null)
+            {
+                throw new ArgumentNullException("Unable to retrieve current weather conditions 🙁");
+            }
+
+            TextOutputService outputService = new TextOutputService()
+            {
+                currentWeather = weather
+            };
+
+            Console.WriteLine(outputService.Render());
         }
         catch (AggregateException aex)
         {
             Console.WriteLine($"ERROR: {aex.Message} : {aex.StackTrace}");
             Console.WriteLine("Did you remember to set WEATHER_KEY environment variable?");
-            return;
+            Environment.Exit(1);
         }
-
-        TextOutputService outputService = new TextOutputService()
+        catch (ArgumentNullException anex)
         {
-            currentWeather = weather
-        };
-
-        Console.WriteLine(outputService.Render());
+            Console.WriteLine($"{anex.Message}");
+            Environment.Exit(1);
+        }
     }
 }

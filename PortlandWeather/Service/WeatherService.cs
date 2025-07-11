@@ -26,7 +26,7 @@ public sealed class WeatherService : IDisposable
     /// <param name="latitude"></param>
     /// <param name="longitude"></param>
     /// <returns></returns>
-    public async Task<CurrentWeather> GetCurrentWeatherAsync(double latitude, double longitude)
+    public async Task<CurrentWeather?> GetCurrentWeatherAsync(double latitude, double longitude)
     {
         // weather?lat=44.34&lon=10.99&appid={API key}
         string parameters = $"weather?lat={latitude.ToString()}&lon={longitude.ToString()}&appid={_apiKey}";
