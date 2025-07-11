@@ -24,7 +24,7 @@ Data by OpenWeatherMap
 
 ### Compiling the code
 
-```
+```powershell
 # This will build a binary, PortlandWeather.exe
 cd PortlandWeather
 dotnet build
@@ -39,21 +39,25 @@ go to their web site, create an account, and generate a new API key.  Copy the
 key and then do the following:
 
 [comment]: # (Does anyone still use csh or derivative?)
-```
+```bash
 # Set API Key in bourne-shell compatible shells (bash, zsh, etc.,)
 export WEATHER_KEY=your-key-here
 
 # Optional: Set Latitude & Longitude
 export WEATHER_LATITUDE=47.672082
 export WEATHER_LONGITUDE=-122.1409983
+```
 
+```powershell
 # Set API Key in Powershell
 $env:WEATHER_KEY = "your-key-here"
 
 # Optional: Set Latitude & Longitude
 $env:WEATHER_LATITUDE = 47.672082
 $env:WEATHER_LONGITUDE = -122.1409983
+```
 
+```bash
 # Run the program
 dotnet run
 
@@ -67,7 +71,7 @@ Maps](https://maps.google.com).
 
 ### Publishing the program
 
-```
+```bash
 # From the root project folder ...
 dotnet publish -o /path/to/output-folder
 ```
